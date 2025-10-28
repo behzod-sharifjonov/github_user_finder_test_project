@@ -1,73 +1,109 @@
-# React + TypeScript + Vite
+# 🟣 GitHub User Finder — React + TypeScript + MUI + RTK
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern GitHub User Finder web application built with **React (TypeScript)**, **Material UI (MUI)**, and **Redux Toolkit (RTK)**.  
+Users can search for any GitHub username and view detailed profile information along with a list of public repositories.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- 🔍 **Search GitHub Users** by username  
+- 👤 **User Profile Card** — avatar, name, username, bio, followers/following count, and GitHub link  
+- 📦 **Repositories List** — name, description, star count  
+- ⚙️ **Loading and Error States** handled gracefully  
+- 🎨 **Material UI** components for a modern and responsive interface  
+- 🧩 **Redux Toolkit** for efficient state management  
+- 🌐 **API integration** using GitHub REST API  
+- 📱 **Responsive Design** using MUI Grid  
+- 🌙 **Optional Dark/Light Mode** toggle  
+- 💾 **LocalStorage Caching** (optional)  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧠 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Category | Technology |
+|-----------|-------------|
+| Frontend | React (TypeScript) |
+| State Management | Redux Toolkit + RTK Query |
+| UI Library | Material UI (MUI v6) |
+| Routing | React Router DOM |
+| HTTP Client | Axios |
+| Styling | Emotion (default with MUI) |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## ⚙️ Installation & Setup
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/your-username/github-user-finder.git
+cd github-user-finder
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2️⃣ Install Dependencies
+```bash
+npm install
 ```
+
+### 3️⃣ Run the App
+```bash
+npm run dev
+```
+
+### Then open your browser and navigate to:
+```arduino
+http://localhost:5173/
+```
+
+### 🧩 Project Structure
+```pgsql
+github-user-finder/
+│
+├── src/
+│   ├── app/
+│   │   ├── store.ts
+│   │
+│   ├── features/
+│   │   ├── github/
+│   │   │   ├── githubSlice.ts
+│   │   │   └── githubApi.ts
+│   │
+│   ├── components/
+│   │   ├── SearchBar.tsx
+│   │   ├── ProfileCard.tsx
+│   │   └── RepoList.tsx
+│   │
+│   ├── pages/
+│   │   ├── Home.tsx
+│   │   └── UserDetails.tsx
+│   │
+│   ├── routes/
+│   │   └── AppRouter.tsx
+│   │
+│   ├── types/
+│   │   ├── user.ts
+│   │   └── repo.ts
+│   │
+│   ├── utils/
+│   │   └── debounce.ts
+│   │
+│   ├── theme/
+│   │   └── muiTheme.ts
+│   │
+│   ├── App.tsx
+│   └── main.tsx
+│
+├── .gitignore
+├── package.json
+├── tsconfig.json
+└── README.md
+```
+
+### 🔗 API Endpoints
+| Data         | Endpoint                                        |
+| ------------ | ----------------------------------------------- |
+| User Profile | `https://api.github.com/users/{username}`       |
+| Repositories | `https://api.github.com/users/{username}/repos` |
+# These endpoints are handled using RTK Query inside githubApi.ts.
+
